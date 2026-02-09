@@ -138,7 +138,7 @@ def recipes_list(request):
     return render(request, 'recipes_list.html', recipes_list_context)
 
 def recipe_1(request):
-    return render(request, 'recipes_1.html', recipe_1_context)
+    return render(request, 'recipe.html', recipe_1_context)
 
 def recipe_2(request):
-    return render(request, 'recipes_2.html', recipe_2_context)
+    return render(request, 'recipe.html', recipe_2_context)
