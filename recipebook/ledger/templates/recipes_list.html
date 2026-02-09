@@ -1,5 +1,33 @@
 {% extends 'base.html' %} 
+{% block style %}
+<style>
+table, td, th {
+  border: 1px solid;
+}
+
+table {
+  border-collapse: collapse;
+}
+</style>
+{% endblock %}
 
 {% block body %}
 <h1>RECIPES LIST</h1>
-{% endblock %}
+
+{% for recipe in recipes %}
+<div style="margin-bottom: 30px">
+  <h2> <a href={{recipe.link}}> {{ recipe.name }} </a> </h2>
+  <table style="margin-left: 20px">
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+    </tr>
+    {% for ingredient in recipe.ingredients %}
+    <tr>
+      <td>{{ingredient.name}}</td>
+      <td>{{ingredient.quantity}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endfor %} {% endblock %}
