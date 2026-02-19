@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Ingredient(models.Model):
@@ -7,12 +8,18 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("view-name", args=[str(self.name)])
+
 
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("view-name", args=[self.pk])
 
 
 class RecipeIngredient(models.Model):
