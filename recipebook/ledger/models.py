@@ -23,3 +23,6 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name="ingredients"
     )
+
+    def __str__(self):
+        return f"{self.recipe.name} : {self.ingredient.name} : {self.quantity}"
