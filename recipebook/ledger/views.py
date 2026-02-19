@@ -11,9 +11,5 @@ def recipes_list(request):
     return render(request, "recipes_list.html", {"recipes": Recipe.objects.all()})
 
 
-def recipe_1(request):
-    return render(request, "recipe.html", recipe_1_context)
-
-
-def recipe_2(request):
-    return render(request, "recipe.html", recipe_2_context)
+def recipe(request, recipe_id):
+    return render(request, "recipe.html", {"recipe": Recipe.objects.get(pk=recipe_id)})
