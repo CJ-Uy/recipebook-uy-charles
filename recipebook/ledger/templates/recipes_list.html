@@ -1,35 +1,33 @@
-{% extends 'base.html' %} 
-{% block style %}
+{% extends 'base.html' %} {% block style %}
 <style>
-table, td, th {
-  border: 1px solid;
-}
+  table,
+  td,
+  th {
+    border: 1px solid;
+  }
 
-table {
-  border-collapse: collapse;
-}
+  table {
+    border-collapse: collapse;
+  }
 </style>
-{% endblock %}
-
-{% block body %}
+{% endblock %} {% block body %}
 <h1>RECIPES LIST</h1>
 
 {% for recipe in recipes %}
 <div style="margin-bottom: 30px">
-  <h2> <a href={{recipe.link}}> {{ recipe.name }} </a> </h2>
+  <h2><a href=""> {{ recipe.name }} </a></h2>
   <table style="margin-left: 20px">
     <tr>
       <th>Name</th>
       <th>Quantity</th>
     </tr>
-    {% for ingredient in recipe.ingredients %}
+
+    {% for recipe_ingredient in recipe.ingredients.all %}
     <tr>
-      <td>{{ingredient.name}}</td>
-      <td>{{ingredient.quantity}}</td>
+      <td>{{recipe_ingredient.ingredient.name}}</td>
+      <td>{{recipe_ingredient.quantity}}</td>
     </tr>
     {% endfor %}
   </table>
 </div>
-{% endfor %} 
-
-{% endblock %}
+{% endfor %} {% endblock %}
