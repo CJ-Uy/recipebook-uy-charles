@@ -1,22 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Index {% block title %}{% endblock %}</title>
-        <style>
-            .header {
-                background-color: lightblue;
-                text-align: center;
-            }
-        </style>
-        {% block style %}{% endblock %}
-    </head>
-    <body>
-        <div class="header">
-            <h1>RECIPE BOOK</h1>
-        </div>
-        {% block body %}{% endblock %}
-        {% block scripts %}{% endblock %}
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index {% block title %}{% endblock %}</title>
+    <style>
+      .header {
+        background-color: lightblue;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #userLogInOut {
+        padding: 10px;
+      }
+      #userLogInOut a,
+      #userLogInOut button {
+        text-decoration: none;
+        background-color: white;
+        color: black;
+        padding: 8px 16px;
+        border-radius: 4px;
+        border: none;
+        font-size: inherit;
+        cursor: pointer;
+        font-family: "Arial", Helvetica, sans-serif;
+      }
+    </style>
+    {% block style %}{% endblock %}
+  </head>
+  <body>
+    <div class="header">
+      <div></div>
+      <h1>RECIPE BOOK</h1>
+      <div id="userLogInOut">
+        {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}" style="display: inline">
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+      </div>
+    </div>
+    {% block body %}{% endblock %} {% block scripts %}{% endblock %}
+  </body>
 </html>
