@@ -15,19 +15,6 @@
 
 {% for recipe in recipes %}
 <div style="margin-bottom: 30px">
-  <h2><a href="/recipe/{{recipe.pk}}"> {{ recipe.name }} </a></h2>
-  <table style="margin-left: 20px">
-    <tr>
-      <th>Name</th>
-      <th>Quantity</th>
-    </tr>
-
-    {% for recipe_ingredient in recipe.ingredients.all %}
-    <tr>
-      <td>{{recipe_ingredient.ingredient.name}}</td>
-      <td>{{recipe_ingredient.quantity}}</td>
-    </tr>
-    {% endfor %}
-  </table>
+  <h2><a href="{{ recipe.get_absolute_url }}"> {{ recipe.name }} </a></h2>
 </div>
 {% endfor %} {% endblock %}
