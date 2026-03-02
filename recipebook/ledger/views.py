@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from ledger.models import Recipe
 
@@ -11,5 +12,6 @@ def recipes_list(request):
     return render(request, "recipes_list.html", {"recipes": Recipe.objects.all()})
 
 
+@login_required
 def recipe(request, recipe_id):
     return render(request, "recipe.html", {"recipe": Recipe.objects.get(pk=recipe_id)})
