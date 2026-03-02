@@ -10,10 +10,9 @@
     border-collapse: collapse;
   }
 </style>
-{% endblock %} {% block body %}
-<h1>RECIPES LIST</h1>
-
-{% for recipe in recipes %}
+{% endblock %} {% block page_title %}
+<h2>Recipes List</h2>
+{% endblock %} {% block body %} {% for recipe in recipes %}
 <div style="margin-bottom: 30px">
   <h2><a href="{{ recipe.get_absolute_url }}"> {{ recipe.name }} </a></h2>
 </div>
