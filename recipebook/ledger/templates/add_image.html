@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% block style %} {% endblock %} 
+
+{% block page_title %}
+<h2>{{recipe.name}} : Add a Image</h2>
+{% endblock %} 
+
+{% block body %}
+<form action="/recipe/add" method="post">
+	{% csrf_token %}
+	<label for="recipeImage" required>
+		<span>Image Upload</span> <br>
+		<input type="file" id="recipeImage" name="recipeImage">
+	</label>
+		
+	<br>
+	<br>
+
+	<input type="submit" value="Submit">
+</form>
+
+<br>
+<a href="/recipe/{{recipe.pk}}">Return to Recipe Details</a>
+{% endblock %}

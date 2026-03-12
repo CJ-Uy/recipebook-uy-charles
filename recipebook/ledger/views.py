@@ -34,3 +34,7 @@ def add_recipe(request):
                 newRecipeIngredient.save()
     
     return render(request, "add_recipe.html", {"ingredients": allIngredients})
+
+@login_required
+def add_image(request, recipe_id):
+    return render(request, "add_image.html", {"recipe": Recipe.objects.get(pk=recipe_id)})
