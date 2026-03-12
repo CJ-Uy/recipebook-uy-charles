@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from ledger.models import Recipe, Ingredient, RecipeIngredient, Profile
+from ledger.models import Recipe, Ingredient, RecipeIngredient, Profile, RecipeImage
 
 
 def index(request):
@@ -37,4 +37,14 @@ def add_recipe(request):
 
 @login_required
 def add_image(request, recipe_id):
-    return render(request, "add_image.html", {"recipe": Recipe.objects.get(pk=recipe_id)})
+    recipeDetails = Recipe.objects.get(pk=recipe_id)
+    if request.method == "POST":
+        newImage = RecipeImage()
+        newImage.recipe = recipeDetails
+        newImage.description = request.POST.get("description")
+        newImage.image = request.FILES.get("recipeImage")
+        newImage.save()
+        
+        return redirect("/recipes/list")
+        
+    return render(request, "add_image.html", {"recipe": recipeDetails})
