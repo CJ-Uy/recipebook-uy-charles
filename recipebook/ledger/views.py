@@ -45,6 +45,6 @@ def add_image(request, recipe_id):
         newImage.image = request.FILES.get("recipeImage")
         newImage.save()
         
-        return redirect("/recipes/list")
+        return redirect(f"/recipe/{recipe_id}")
         
     return render(request, "add_image.html", {"recipe": recipeDetails})
