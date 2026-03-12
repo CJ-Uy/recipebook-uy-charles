@@ -16,6 +16,12 @@
 <h2>Author: {{ recipe.author.name }}</h2>
 
 <div style="margin-bottom: 30px">
+  {% if recipe.images.all %} 
+    {% for recipeImage in recipe.images.all %}
+      <img src="{{ recipeImage.image.url }}" alt="{{recipeImage.description}}" width="300px" />
+    {% endfor %} 
+  {% endif %}
+
   <table style="margin-left: 20px">
     <tr>
       <th>Name</th>
