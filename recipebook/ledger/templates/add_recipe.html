@@ -1,0 +1,44 @@
+{% extends 'base.html' %} 
+{% block style %} {% endblock %} 
+
+{% block page_title %}
+<h2>Add a Recipe</h2>
+{% endblock %} 
+
+{% block body %}
+
+<form action="/recipe/add" method="post">
+	{% csrf_token %}
+	<label for="name" required>
+		<span>Recipe Name</span> <br>
+		<input type="text" id="name" name="name">
+	</label>
+	
+	<br>
+	<br>
+
+	<table>
+		<tr>
+			<th>Ingredient</th>
+			<th>Quantity</th>
+		</tr>
+		
+		{% for ingredient in ingredients %}
+		<tr>
+			<label for="ingredient:{{ingredient.pk}}">
+				<td>{{ingredient}}</td>
+				<td><input type="text" id="{{ingredient.pk}}" name="ingredient:{{ingredient.pk}}"></td>
+			</label>
+		</tr>
+		{% endfor %}
+		
+	</table>
+
+	<br>
+
+	<input type="submit" value="Submit">
+</form>
+
+<br>
+<a href="/recipes/list">Return to Recipe List</a>
+{% endblock %}
