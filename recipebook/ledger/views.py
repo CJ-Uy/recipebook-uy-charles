@@ -33,4 +33,4 @@ def add_recipe(request):
                 newRecipeIngredient.quantity = value
                 newRecipeIngredient.save()
     
-    return render(request, "addRecipe.html", {"ingredients": allIngredients})
+    return render(request, "add_recipe.html", {"ingredients": allIngredients})
