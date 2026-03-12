@@ -15,3 +15,7 @@ def recipes_list(request):
 @login_required
 def recipe(request, recipe_id):
     return render(request, "recipe.html", {"recipe": Recipe.objects.get(pk=recipe_id)})
+
+@login_required
+def add_recipe(request):
+    return render(request, "addRecipe.html")

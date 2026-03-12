@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block style %}
+{% extends 'base.html' %} 
+
+{% block style %}
 <style>
   table,
   td,
@@ -10,10 +12,23 @@
     border-collapse: collapse;
   }
 </style>
-{% endblock %} {% block page_title %}
+{% endblock %} 
+
+{% block page_title %}
 <h2>Recipes List</h2>
-{% endblock %} {% block body %} {% for recipe in recipes %}
-<div style="margin-bottom: 30px">
-  <h2><a href="{{ recipe.get_absolute_url }}"> {{ recipe.name }} </a></h2>
-</div>
-{% endfor %} {% endblock %}
+{% endblock %} 
+
+{% block body %} 
+
+  {% for recipe in recipes %}
+  <div style="margin-bottom: 30px">
+    <h2>
+      <a href="{{ recipe.get_absolute_url }}"> {{ recipe.name }} </a>
+    </h2>
+  </div>
+  {% endfor %}
+
+  <br>
+  <a href="/recipe/add">Add a new recipe</a>
+
+{% endblock %}
