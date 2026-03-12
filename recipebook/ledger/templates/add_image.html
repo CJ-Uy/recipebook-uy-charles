@@ -6,7 +6,7 @@
 {% endblock %} 
 
 {% block body %}
-<form action="/recipe/add" method="post">
+<form action="/recipe/{{recipe.pk}}" method="post">
 	{% csrf_token %}
 	<label for="recipeImage" required>
 		<span>Image Upload</span> <br>
